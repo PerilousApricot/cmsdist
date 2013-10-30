@@ -1,4 +1,4 @@
-### RPM cms crabtaskworker 3.3.0.pre5.2
+### RPM cms crabtaskworker 3.3.0.pre6
 ## INITENV +PATH PATH %i/xbin
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 ## INITENV +PATH PYTHONPATH %i/x$PYTHON_LIB_SITE_PACKAGES
@@ -6,20 +6,16 @@
 
 %define webdoc_files %{installroot}/%{pkgrel}/doc/
 %define wmcver 0.9.82
-%define crabutils 0.0.1pre18
-%define twtag 3.3.0-pre5
+%define crabservertag 3.3.0.pre2
 
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore-%{wmcver}&output=/WMCore-%{n}-%{wmcver}.tar.gz
-Source1: git://github.com/bbockelm/CAFTaskWorker.git?obj=master/%{twtag}&export=CAFTaskWorker-%{realversion}&output=/CAFTaskWorker-%{realversion}.tar.gz
-#Source1: git+http://git.cern.ch/pub/CAFTaskWorker.git?obj=master/%{realversion}&export=CAFTaskWorker-%{realversion}&output=/CAFTaskWorker-%{realversion}.tar.gz
-Source2: git+http://git.cern.ch/pub/CAFUtilities.git?obj=master/%{crabutils}&export=CAFUtilities-%{crabutils}&output=/CAFUtilities-%{crabutils}.tar.gz
+Source1: git://github.com/dmwm/CRABServer.git?obj=master/%{crabservertag}&export=CRABServer-%{realversion}&output=/CRABServer-%{realversion}.tar.gz
 
 Requires: python  dbs-client dls-client dbs3-client py2-pycurl py2-httplib2 py2-sqlalchemy py2-cx-oracle
 BuildRequires: py2-sphinx
 
 %prep
-%setup -D -T -b 1 -n CAFTaskWorker-%{realversion}
-%setup -T -b 2 -n CAFUtilities-%{crabutils}
+%setup -D -T -b 1 -n CRABServer-%{realversion}
 %setup -T -b 0 -n WMCore-%{wmcver}
 
 %build
@@ -27,11 +23,8 @@ pwd
 cd ../WMCore-%{wmcver}
 python setup.py build_system -s crabtaskworker 
 PYTHONPATH=$PWD/build/lib:$PYTHONPATH
-cd ../CAFUtilities-%{crabutils}
-perl -p -i -e "s{<VERSION>}{%{realversion}}g" doc/crabutilities/conf.py
-python setup.py build_system -s CAFTaskWorker
 
-cd ../CAFTaskWorker-%{realversion}
+cd ../CRABServer-%{realversion}
 perl -p -i -e "s{<VERSION>}{%{realversion}}g" doc/taskworker/conf.py
 python setup.py build_system -s CAFTaskWorker
 
@@ -39,15 +32,13 @@ python setup.py build_system -s CAFTaskWorker
 mkdir -p %i/etc/profile.d %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
 cd ../WMCore-%{wmcver}
 python setup.py install_system -s  crabtaskworker --prefix=%i
-cd ../CAFUtilities-%{crabutils}
-python setup.py install_system -s CAFTaskWorker  --prefix=%i
-cd ../CAFTaskWorker-%{realversion}
+cd ../CRABServer-%{realversion}
 python setup.py install_system -s CAFTaskWorker  --prefix=%i
 
 find %i -name '*.egg-info' -exec rm {} \;
 
 # Generate .pyc files.
-python -m compileall %i/$PYTHON_LIB_SITE_PACKAGES/CAFTaskWorker || true
+python -m compileall %i/$PYTHON_LIB_SITE_PACKAGES/CRABServer || true
 
 # Generate dependencies-setup.{sh,csh} so init.{sh,csh} picks full environment.
 mkdir -p %i/etc/profile.d
