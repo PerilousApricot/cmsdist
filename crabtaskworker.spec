@@ -11,7 +11,7 @@
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore-%{wmcver}&output=/WMCore-%{n}-%{wmcver}.tar.gz
 Source1: git://github.com/dmwm/CRABServer.git?obj=master/%{crabservertag}&export=CRABServer-%{realversion}&output=/CRABServer-%{realversion}.tar.gz
 
-Requires: python  dbs-client dls-client dbs3-client py2-pycurl py2-httplib2 py2-sqlalchemy py2-cx-oracle
+Requires: python  dbs-client dls-client dbs3-client py2-pycurl py2-httplib2
 BuildRequires: py2-sphinx
 
 %prep
@@ -21,19 +21,19 @@ BuildRequires: py2-sphinx
 %build
 pwd
 cd ../WMCore-%{wmcver}
-python setup.py build_system -s crabtaskworker 
+python setup.py build_system -s crabtaskworker
 PYTHONPATH=$PWD/build/lib:$PYTHONPATH
 
 cd ../CRABServer-%{realversion}
 perl -p -i -e "s{<VERSION>}{%{realversion}}g" doc/taskworker/conf.py
-python setup.py build_system -s CAFTaskWorker
+python setup.py build_system -s TaskWorker
 
 %install
 mkdir -p %i/etc/profile.d %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
 cd ../WMCore-%{wmcver}
 python setup.py install_system -s  crabtaskworker --prefix=%i
 cd ../CRABServer-%{realversion}
-python setup.py install_system -s CAFTaskWorker  --prefix=%i
+python setup.py install_system -s TaskWorker  --prefix=%i
 
 find %i -name '*.egg-info' -exec rm {} \;
 
