@@ -2,7 +2,7 @@
 ## BUILDIF case $(uname):$(uname -m) in Linux:i*86 ) true ;; Linux:x86_64 ) true ;;  Linux:ppc64 ) false ;; Darwin:* ) true ;; * ) false ;; esac
 Source: http://ftp.gnu.org/gnu/%{n}/%{n}-%{realversion}.tar.bz2
 Patch0: gdb-7.3.1-fix-pythonhome
-Requires: python
+Requires: python ncurses
 #Requires: expat
 
 %prep
@@ -11,7 +11,7 @@ Requires: python
 
 %build
 export PYTHONV=$(echo $PYTHON_VERSION | cut -f1,2 -d.)
-./configure --prefix=%{i} --with-system-gdbinit=%{i}/share/gdbinit --with-expat=no --with-python=$PYTHON_ROOT LDFLAGS="-L$PYTHON_ROOT/lib" CFLAGS="-Wno-error=strict-aliasing"
+./configure --prefix=%{i} --with-system-gdbinit=%{i}/share/gdbinit --with-expat=no --with-python=$PYTHON_ROOT LDFLAGS="-L$PYTHON_ROOT/lib -L${NCURSES_ROOT}/lib" CFLAGS="-Wno-error=strict-aliasing -I${NCURSES_ROOT}/include"
 make %makeprocesses
 
 %install
