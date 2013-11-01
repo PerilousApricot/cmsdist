@@ -1,8 +1,14 @@
-### RPM cms couchskel 0.9.10 
+### RPM cms couchskel 0.9.11 
 Source0: git://github.com/dmwm/WMCore?obj=master/%realversion&export=%n&output=/%n.tar.gz
 
 # External javascripts
-Source1: http://datatables.net/releases/DataTables-1.9.1.zip
+# Note, DataTables throws a 403 when using cmsBuild, but works fine for
+# a straight curl/wget, so they must have their site configured to block
+# us. Mirror it locally
+
+%define mirrordir http://brazil.accre.vanderbilt.edu:8081/cmssw/datatables-mirror
+
+Source1: %mirrordir/DataTables-1.9.1.zip
 Source2: https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js
 Source3: http://code.jquery.com/jquery-1.7.2.min.js
 Source4: http://d3js.org/d3.v2.min.js

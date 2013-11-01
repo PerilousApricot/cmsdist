@@ -80,7 +80,8 @@ esac
 
 ./configure --prefix=%i $additionalConfigureOptions --enable-shared \
             --without-tkinter --disable-tkinter
-
+echo "MELO TEST $LD_LIBRARY_PATH $PATH $LDFLAGS $CPPFLAGS"
+which rpm
 make %makeprocesses
 
 %install
