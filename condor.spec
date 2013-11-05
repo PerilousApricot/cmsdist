@@ -82,3 +82,24 @@ rm -rf %i/libexec
 rm -rf %i/src %i/bosco* %i/condor*
 rm -rf %i/lib/condor/{libcom*,libcrypto*,libexpat*,libk*,libl*,libp*,libssl*,libgssapi_krb5*}
 
+# make dummy condor_config
+mkdir -p %i/etc/profile.d
+: > %i/etc/profile.d/dependencies-setup.sh
+: > %i/etc/profile.d/dependencies-setup.csh
+for tool in $(echo %{requiredtools} | sed -e's|\s+| |;s|^\s+||'); do
+  root=$(echo $tool | tr a-z- A-Z_)_ROOT; eval r=\$$root
+  if [ X"$r" != X ] && [ -r "$r/etc/profile.d/init.sh" ]; then
+    echo "test X\$$root != X || . $r/etc/profile.d/init.sh" >> %i/etc/profile.d/dependencies-setup.sh
+    echo "test X\$$root != X || source $r/etc/profile.d/init.csh" >> %i/etc/profile.d/dependencies-setup.csh
+  fi
+done
+echo "# Dummy condor_config for CMS installs" > %i/etc/condor_config_blank
+cat << 'EOF' >> %i/etc/profile.d/dependencies-setup.sh
+if [[ ! -f $CONDOR_CONFIG && ! -f /etc/condor/condor_config && ! -f $HOME/condor/condor_config ]]; then
+    export CONDOR_CONFIG=%i/etc/condor_config_blank
+fi
+EOF
+
+%post
+%{relocateConfig}etc/profile.d/dependencies-setup.*sh
+
