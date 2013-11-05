@@ -7,7 +7,7 @@ Source: http://switch.dl.sourceforge.net/project/%{n}/%{n}/%{v}/%{n}%{boostver}.
 %define cms_cxxflags -std=c++0x -O2
 %endif
 
-Requires: python bz2lib
+Requires: python bz2lib icu4c
 %if "%online" != "true"
 Requires: zlib
 %endif
@@ -48,7 +48,7 @@ then
   ZLIBI="ZLIB_INCLUDE=$ZLIB_ROOT/include"
 fi
 
-tools/build/v2/bjam %makeprocesses cxxflags="%{cms_cxxflags}" -s$PR -s$PV -s$BZ2LIBR -s$BZ2LIBI ${ZLIBR+-s$ZLIBR} ${ZLIBI+-s$ZLIBI} toolset=$TOOLSET stage
+tools/build/v2/bjam %makeprocesses cxxflags="%{cms_cxxflags}" -s$PR -s$PV -s$BZ2LIBR -s$BZ2LIBI ${ZLIBR+-s$ZLIBR} ${ZLIBI+-s$ZLIBI} toolset=$TOOLSET --with-locale -sICU_PATH=$ICU4C_ROOT stage
 
 %install
 case %cmsos in osx*) so=dylib ;; *) so=so ;; esac
