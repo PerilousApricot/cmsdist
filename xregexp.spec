@@ -2,11 +2,11 @@
 ## NOCOMPILER
 
 Source0: http://xregexp.com/xregexp.js
-Source1: http://xregexp.com/plugins/xregexp-unicode-base.js
-Source2: http://xregexp.com/plugins/xregexp-unicode-categories.js
-Source3: http://xregexp.com/plugins/xregexp-unicode-scripts.js
-Source4: http://xregexp.com/plugins/xregexp-unicode-blocks.js
-Source5: http://xregexp.com/plugins/xregexp-matchrecursive.js
+Source1: http://xregexp.com/addons/unicode/unicode-base.js
+Source2: http://xregexp.com/addons/unicode/unicode-categories.js
+Source3: http://xregexp.com/addons/unicode/unicode-scripts.js
+Source4: http://xregexp.com/addons/unicode/unicode-blocks.js
+Source5: http://xregexp.com/addons/matchrecursive.js
 Requires: yuicompressor
 BuildRequires: java-jdk
 

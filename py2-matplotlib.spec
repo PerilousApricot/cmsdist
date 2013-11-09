@@ -1,7 +1,7 @@
 ### RPM external py2-matplotlib 1.3.1
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 Source: http://sourceforge.net/projects/matplotlib/files/matplotlib/matplotlib-%{realversion}/matplotlib-%{realversion}.tar.gz
-Requires: py2-pytz py2-numpy py2-python-dateutil zlib libpng freetype
+Requires: py2-pytz py2-numpy py2-python-dateutil zlib libpng freetype python
 BuildRequires: py2-setuptools
 
 %prep
@@ -21,7 +21,9 @@ macosx = False
 EOF
 
 %build
-python setup.py build
+export LDFLAGS="-L$FREETYPE_ROOT/lib"
+export CFLAGS="-I$FREETYPE_ROOT/include/freetype2 -I$FREETYPE_ROOT/include"
+python setup.py --verbose build
 
 %install
 python setup.py install --prefix=%i --single-version-externally-managed --record=/dev/null

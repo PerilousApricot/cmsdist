@@ -10,7 +10,7 @@ Requires: zlib
 
 %build
 ./configure --disable-static --prefix=%{i} --build="%{_build}" \
-            --host="%{_host}" --with-zlib="${ZLIB_BOOTSTRAP_ROOT}" --without-python
+            --host="%{_host}" --with-zlib="${ZLIB_ROOT}" --without-python
 make %{makeprocesses}
 
 %install

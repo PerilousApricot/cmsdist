@@ -3,7 +3,8 @@
 ## INITENV SET SRM_PATH %i
 
 %define realv %(echo %realversion | tr "_" "-")
-Source: http://www.dcache.org/downloads/1.9/dcache-srmclient-%realv.noarch.rpm
+#Source: http://www.dcache.org/downloads/1.9/dcache-srmclient-%realv.noarch.rpm
+Source: http://brazil.accre.vanderbilt.edu:8081/cmssw/dcache-srmclient-%realv.noarch.rpm
 Requires: java-jdk
 
 %prep

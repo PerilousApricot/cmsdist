@@ -17,6 +17,7 @@ Requires: python
 Requires: libtool
 Requires: p5-archive-tar
 Requires: expat
+Requires: pcre libuuid
 
 %prep 
 %setup -n %n-%{realversion}

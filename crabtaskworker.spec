@@ -10,7 +10,7 @@
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore-%{wmcver}&output=/WMCore-%{n}-%{wmcver}.tar.gz
 Source1: git://github.com/dmwm/CRABServer.git?obj=master/%{crabservertag}&export=CRABServer-%{realversion}&output=/CRABServer-%{realversion}.tar.gz
 
-Requires: python  dbs-client dls-client dbs3-client py2-pycurl py2-httplib2 condor
+Requires: python  dbs-client dls-client dbs3-client py2-pycurl py2-httplib2  condor
 BuildRequires: py2-sphinx
 
 %prep

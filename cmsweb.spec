@@ -1,8 +1,8 @@
 ### RPM cms cmsweb HG1310f
-
+# remove dqmgui since it won't build
 # This is a meta-package to group all cms webtools services from comp repository
 Requires: frontend das dbs3 filemover sitedb couchdb reqmon
-Requires: PHEDEX-combined-web stagemanager reqmgr dqmgui overview workqueue
+Requires: PHEDEX-combined-web stagemanager reqmgr overview workqueue
 Requires: rotatelogs pystack py2-geoip py2-adns py2-netaddr valgrind igprof
 Requires: wmcore-devtools py2-psutil cmsweb-analytics yui3
 Requires: dbs3-client stagemanager-agent crabserver crabclient crabcache

@@ -3,7 +3,7 @@
 
 %define downloadn pycrypto
 Requires: python gmp
-Source: http://www.amk.ca/files/python/crypto/%downloadn-%realversion.tar.gz 
+Source: https://pypi.python.org/packages/source/p/pycrypto/%downloadn-%realversion.tar.gz
 
 %prep
 %setup -n %downloadn-%realversion

@@ -1,6 +1,6 @@
 ### RPM external dcap 2.47.5.0
 #get dcap from dcache svn repo now...
-Source: http://cmsrep.cern.ch/cmssw/download/dcap/dcap.tgz
+Source: http://brazil.accre.vanderbilt.edu:8081/cmssw/dcap.tgz
 #Source: svn://svn.dcache.org/dCache/tags/dcap-%realversion?scheme=http&module=dcap&output=/dcap.tgz
 Patch0: dcap-2.47.5.0-macosx
 Patch1: dcap-2.47.5.0-fork-safety
