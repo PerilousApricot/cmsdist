@@ -1,8 +1,7 @@
-### RPM external p5-time-hires 1.9715
+### RPM external p5-time-hires 1.9726
 ## INITENV +PATH PERL5LIB %i/lib/perl5
-# Dummy comment: forcing the compiling for SLC6
 %define downloadn Time-HiRes
-Source: http://search.cpan.org/CPAN/authors/id/J/JH/JHI/%{downloadn}-%{realversion}.tar.gz
+Source: http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/%{downloadn}-%{realversion}.tar.gz
 Requires: p5-extutils-makemaker
 
 %prep

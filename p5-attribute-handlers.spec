@@ -1,4 +1,4 @@
-### RPM external p5-attribute-handlers 0.91
+### RPM external p5-attribute-handlers 0.93
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn Attribute-Handlers
 Source: http://search.cpan.org/CPAN/authors/id/S/SM/SMUELLER/%{downloadn}-%{realversion}.tar.gz

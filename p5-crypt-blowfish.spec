@@ -1,4 +1,4 @@
-### RPM external p5-crypt-blowfish 2.12
+### RPM external p5-crypt-blowfish 2.14
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn Crypt-Blowfish
 Source:  http://search.cpan.org/CPAN/authors/id/D/DP/DPARIS/%{downloadn}-%{realversion}.tar.gz

@@ -1,4 +1,4 @@
-### RPM external p5-ipc-cmd 0.72
+### RPM external p5-ipc-cmd 0.86
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn IPC-Cmd
 Source: http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/%{downloadn}-%{realversion}.tar.gz

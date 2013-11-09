@@ -1,4 +1,4 @@
-### RPM external p5-module-load 0.18
+### RPM external p5-module-load 0.24
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn Module-Load
 Source: http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/%{downloadn}-%{realversion}.tar.gz

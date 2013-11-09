@@ -1,4 +1,4 @@
-### RPM external p5-params-check 0.28
+### RPM external p5-params-check 0.38
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn Params-Check
 Source: http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/%{downloadn}-%{realversion}.tar.gz
