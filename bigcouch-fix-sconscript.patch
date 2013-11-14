@@ -1,0 +1,15 @@
+--- couchjs/c_src/SConscript    2013-03-31 18:55:51.733903994 -0500
++++ couchjs/c_src/SConscript    2013-03-31 18:58:10.541903966 -0500
+@@ -47,6 +47,13 @@
+         if s1 == 0 or s2 == 0:
+             break
+
++if ARGUMENTS.get('spiderInclude', ''):
++    env.Append( CPPPATH=[ARGUMENTS.get('spiderInclude')] )
++if ARGUMENTS.get('spiderLib', ''):
++    env.Append( LIBPATH=[ARGUMENTS.get('spiderLib')] )
++
++
++
+ if not env.GetOption('clean'):
+     conf = Configure(env, config_h='config.h')
