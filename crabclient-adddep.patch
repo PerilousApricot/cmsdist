@@ -1,5 +1,5 @@
 diff --git setup_dependencies.py setup_dependencies.py
-index af0d9d4..79d0c0e 100644
+index af0d9d4..230ac65 100644
 --- setup_dependencies.py
 +++ setup_dependencies.py
 @@ -123,10 +123,12 @@ dependencies = {'wmc-rest':{
@@ -8,12 +8,12 @@ index af0d9d4..79d0c0e 100644
                  'crabclient':{
 -                        'packages': ['WMCore.Wrappers+', 'WMCore.Credential', 'PSetTweaks'],
 +                        'packages': ['WMCore.Wrappers+', 'WMCore.Credential',
-+                                     'PSetTweaks', 'WMCore.Services.UserFileCache'],
++                                     'PSetTweaks', 'WMCore.Services.UserFileCache+'],
                          'systems': ['wmc-base'],
                          'modules': ['WMCore.FwkJobReport.FileInfo', 'WMCore.Services.Requests',
 -                                    'WMCore.Services.Service', 'WMCore.Services.pycurl_manager'],
 +                                    'WMCore.Services.Service', 'WMCore.Services.pycurl_manager',
-+                                    'WMCore.Services.UserFileCache'],
++                                   ],
                          },
                  'crabtaskworker':{
                          'packages':['WMCore..WorkQueue', 'WMCore.Credential', 'WMCore.Algorithms+', 'WMCore.WMSpec+',
