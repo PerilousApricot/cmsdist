@@ -1,38 +1,34 @@
-### RPM cms crabclient 3.2.0pre16
+### RPM cms crabclient 3.3.0.rc1
 ## INITENV +PATH PATH %i/xbin
 ## INITENV +PATH PYTHONPATH %i/$PYTHON_LIB_SITE_PACKAGES
 ## INITENV +PATH PYTHONPATH %i/x$PYTHON_LIB_SITE_PACKAGES
 
-%define wmcver 0.9.78
+%define wmcver 0.9.84
+%define crabserverver 3.3.0.rc1
 %define webdoc_files %{installroot}/%{pkgrel}/doc/
-%define crabutils 0.0.1pre16
 
 Source0: git://github.com/dmwm/WMCore.git?obj=master/%{wmcver}&export=WMCore-%{wmcver}&output=/WMCore-%{n}-%{wmcver}.tar.gz
 Source1: git://github.com/dmwm/CRABClient.git?obj=master/%{realversion}&export=CRABClient-%{realversion}&output=/CRABClient-%{realversion}.tar.gz
-Source2: git+http://git.cern.ch/pub/CAFUtilities.git?obj=master/%{crabutils}&export=CAFUtilities-%{crabutils}&output=/CAFUtilities-%{crabutils}.tar.gz
-
+Source2: git://github.com/dmwm/CRABServer.git?obj=master/%{crabserverver}&export=CRABServer-%{crabserverver}&output=/CRABServer-%{crabserverver}.tar.gz
+Patch0: crabclient-adddep
 Requires: python py2-httplib2 py2-sphinx py2-pycurl
-
-Patch0: crabserver3-setup
 
 %prep
 %setup -D -T -b 1 -n CRABClient-%{realversion}
-%setup -T -b 2 -n CAFUtilities-%{crabutils}
 %setup -T -b 0 -n WMCore-%{wmcver}
 %patch0 -p0
-
+%setup -T -b 2 -n CRABServer-%{crabserverver}
 %build
 cd ../WMCore-%{wmcver}
 python setup.py build_system -s crabclient
-
-cd ../CAFUtilities-%{crabutils}
-perl -p -i -e "s{<VERSION>}{%{realversion}}g" doc/crabutilities/conf.py
-python setup.py build_system -s crabclient
+cd ../CRABServer-%{crabserverver}
+perl -p -i -e  "s{<VERSION>}{%{realversion}}g" doc/crabserver/conf.py
+python setup.py build_system -s CRABClient
 cd ../CRABClient-%{realversion}
 python setup.py build
-
 PYTHONPATH=$PWD/src/python:$PYTHONPATH
-cd doc
+
+cd ../CRABClient-%{realversion}/doc
 cat crabclient/conf.py | sed "s,development,%{realversion},g" > crabclient/conf.py.tmp
 mv crabclient/conf.py.tmp crabclient/conf.py
 mkdir -p build
@@ -42,8 +38,8 @@ make html
 mkdir -p %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
 cd ../WMCore-%{wmcver}
 python setup.py install_system -s crabclient --prefix=%i
-cd ../CAFUtilities-%{crabutils}
-python setup.py install_system -s crabclient  --prefix=%i
+cd ../CRABServer-%{crabserverver}
+python setup.py install_system -s CRABClient --prefix=%i
 cd ../CRABClient-%{realversion}
 python setup.py install --prefix=%i
 cp -rp src/python/* %i/$PYTHON_LIB_SITE_PACKAGES/
