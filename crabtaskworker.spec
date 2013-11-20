@@ -17,7 +17,8 @@ BuildRequires: py2-sphinx
 %setup -T -b 0 -n WMCore-%{wmcver}
 
 %build
-pwd
+touch $PWD/condor_config
+export CONDOR_CONFIG=$PWD/condor_config
 cd ../WMCore-%{wmcver}
 python setup.py build_system -s crabtaskworker
 PYTHONPATH=$PWD/build/lib:$PYTHONPATH
@@ -28,6 +29,8 @@ python setup.py build_system -s TaskWorker
 
 %install
 mkdir -p %i/etc/profile.d %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
+touch $PWD/condor_config
+export CONDOR_CONFIG=$PWD/condor_config
 cd ../WMCore-%{wmcver}
 python setup.py install_system -s  crabtaskworker --prefix=%i
 cd ../CRABServer-%{realversion}
