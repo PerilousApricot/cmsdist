@@ -18,7 +18,8 @@ BuildRequires: py2-sphinx
 %setup -T -b 0 -n WMCore-%{wmcver}
 
 %build
-
+touch $PWD/condor_config
+export CONDOR_CONFIG=$PWD/condor_config
 cd ../WMCore-%{wmcver}
 python setup.py build_system -s crabserver
 PYTHONPATH=$PWD/build/lib:$PYTHONPATH
@@ -29,11 +30,12 @@ python setup.py build_system -s CRABInterface
 
 %install
 mkdir -p %i/etc/profile.d %i/{x,}{bin,lib,data,doc} %i/{x,}$PYTHON_LIB_SITE_PACKAGES
+touch $PWD/condor_config
+export CONDOR_CONFIG=$PWD/condor_config
 cd ../WMCore-%{wmcver}
 python setup.py install_system -s crabserver --prefix=%i
 cd ../CRABServer-%{realversion}
 python setup.py install_system -s CRABInterface --prefix=%i
-
 find %i -name '*.egg-info' -exec rm {} \;
 
 # Generate .pyc files.
