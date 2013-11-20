@@ -9,7 +9,7 @@ index 4f2857b..b840262 100644
 +    % begin timer to deal with heartbeat when filter function fails
 +    case Args#changes_args.heartbeat of
 +        undefined ->
-+            erland:erase(last_changes_heartbeat);
++            erlang:erase(last_changes_heartbeat);
 +        Val when is_integer(Val); Val =:= true ->
 +            put(last_changes_heartbeat, now())
 +    end,

@@ -121,6 +121,15 @@ for tool in $(echo %{requiredtools} | sed -e's|\s+| |;s|^\s+||'); do
   fi
 done
 
+# Add default authentication stuff to local.ini
+# otherwise things don't work at all
+cat << EOF >> %i/etc/local.ini
+[couch_cms_auth]
+allow_backend_passthrough = true
+allowed_hosts = {127.0.0.1, _admin, _admin},{localhost, _admin, _admin}
+
+EOF
+
 %post
  
 %{relocateConfig}etc/profile.d/dependencies-setup.*sh
