@@ -1,4 +1,4 @@
-### RPM external p5-common-sense 3.4
+### RPM external p5-common-sense 3.72
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 %define downloadn common-sense
 Source: http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/%{downloadn}-%{realversion}.tar.gz

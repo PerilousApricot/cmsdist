@@ -1,4 +1,4 @@
-### RPM external p5-json-xs 2.3
+### RPM external p5-json-xs 2.34
 ## INITENV +PATH PERL5LIB %i/lib/perl5
 # Dummy comment: forcing the compiling for SLC6...
 %define downloadn JSON-XS
