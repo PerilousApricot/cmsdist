@@ -9,7 +9,7 @@ Source: git+https://github.com/%github_user/%n.git?obj=%{branch}/%{tag}&export=%
 %define cms_cxxflags -std=c++11 -O2
 %endif
 
-Requires: python bz2lib zlib
+Requires: python bz2lib zlib gcc python
 
 %prep
 %setup -n %{n}-%{realversion}
