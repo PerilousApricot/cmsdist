@@ -1,4 +1,4 @@
-### RPM external libxml2 2.7.7
+### RPM external libxml2 2.9.2
 %define downloadv %(echo %{realversion} | cut -d"_" -f1)
 Source: ftp://xmlsoft.org/%{n}/%{n}-%{downloadv}.tar.gz
 %define online %(case "%{cmsplatf}" in (*onl_*_*) echo true;; (*) echo false;; esac)
