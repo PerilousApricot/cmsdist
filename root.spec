@@ -2,7 +2,7 @@
 ## INITENV +PATH PYTHONPATH %{i}/lib
 ## INITENV SET ROOTSYS %{i}
 #%define tag v6-02-10
-%define tag dc337b6090cf411d3bc5e4916915c906d0623e8f
+%define tag 50635215a3aaaba32b78f90f8da36f66dce0d8ad
 %define branch osx10-10-changes
 #Source: git+http://root.cern.ch/git/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
 Source: git+https://github.com/gartung/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
