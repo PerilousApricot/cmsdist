@@ -1,4 +1,4 @@
-### RPM external freetype 2.4.7
+### RPM external freetype 2.6
 Source: http://download.savannah.gnu.org/releases/freetype/freetype-%realversion.tar.bz2
 Requires: bz2lib zlib
 
