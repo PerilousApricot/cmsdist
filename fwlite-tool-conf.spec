@@ -56,7 +56,7 @@ Requires: roofit-toolfile
 
 # Only for Darwin platform.
 %if %isdarwin
-Requires: freetype-toolfile
+#Requires: freetype-toolfile
 %endif
 
 %define skipreqtools jcompiler db4 expat fftw3 sqlite

@@ -114,6 +114,7 @@ TARGET_PLATF=
                             --disable-cocoa
                             --disable-bonjour
                             --enable-x11
+             --enable-builtin-freetype
              --with-cxx=g++
              --with-cc=gcc
              --with-ld=g++
