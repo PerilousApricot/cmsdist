@@ -18,7 +18,7 @@ Requires: castor dcap
 %endif
 
 %if %isdarwin
-Requires: freetype
+#Requires: freetype
 %endif
 
 %define keep_archives true
