@@ -18,7 +18,7 @@ Requires: castor dcap
 %endif
 
 %if %isdarwin
-Requires: freetype
+#Requires: freetype
 %endif
 
 %define keep_archives true
@@ -56,7 +56,6 @@ export ROOT_INCLUDE_PATH
 
 CONFIG_ARGS="--enable-table
              --disable-builtin-pcre
-             --disable-builtin-freetype
              --disable-builtin-zlib
              --enable-python --with-python-libdir=${PYTHON_ROOT}/lib --with-python-incdir=${PYTHON_ROOT}/include/python${PYTHONV}
              --enable-explicitlink
@@ -99,6 +98,7 @@ TARGET_PLATF=
                             --with-castor-incdir=${CASTOR_ROOT}/include/shift
                             --with-dcap-libdir=${DCAP_ROOT}/lib
                             --with-dcap-incdir=${DCAP_ROOT}/include
+             --disable-builtin-freetype
              --with-cxx=g++
              --with-cc=gcc
              --with-ld=g++
