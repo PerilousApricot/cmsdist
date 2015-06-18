@@ -1,11 +1,9 @@
-### RPM lcg root 6.02.10
+### RPM lcg root 6.04.01
 ## INITENV +PATH PYTHONPATH %{i}/lib
 ## INITENV SET ROOTSYS %{i}
-#%define tag v6-02-10
-%define tag 50635215a3aaaba32b78f90f8da36f66dce0d8ad
-%define branch osx10-10-changes
-#Source: git+http://root.cern.ch/git/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
-Source: git+https://github.com/gartung/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
+%define tag 18d2af2502e255a4bfa4545485eae8d9d1654be8
+%define branch v6-04-00-patches
+Source: git+http://root.cern.ch/git/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
 
 %define islinux %(case %{cmsos} in (slc*|fc*) echo 1 ;; (*) echo 0 ;; esac)
 %define isdarwin %(case %{cmsos} in (osx*) echo 1 ;; (*) echo 0 ;; esac)
@@ -16,6 +14,7 @@ Requires: gsl libjpg libpng libtiff giflib pcre python fftw3 xz xrootd libxml2 o
 
 Patch0: root-6.04.00-fix-cmake-opengl
 Patch1: root-6.04.00-fix-cmake-openssl
+Patch2: root-6.04.00-rootcling
 
 %if %islinux
 Requires: castor dcap
@@ -36,6 +35,7 @@ Requires: castor dcap
 %setup -n %{n}-%{realversion}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -rf ../build

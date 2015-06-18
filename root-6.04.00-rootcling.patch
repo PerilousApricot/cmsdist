@@ -1,0 +1,17 @@
+diff --git a/core/utils/src/rootcling.cxx b/core/utils/src/rootcling.cxx
+index 69fe12f..6c24845 100644
+--- a/core/utils/src/rootcling.cxx
++++ b/core/utils/src/rootcling.cxx
+@@ -5680,7 +5680,11 @@ int GenReflex(int argc, char **argv)
+    }
+ 
+    // Add the .so extension to the rootmap lib if not there
+-   if (!rootmapLibName.empty() && !ROOT::TMetaUtils::EndsWith(rootmapLibName, gLibraryExtension)) {
++   if (!rootmapLibName.empty() && !ROOT::TMetaUtils::EndsWith(rootmapLibName, gLibraryExtension)
++#ifdef __APPLE__
++                               && !ROOT::TMetaUtils::EndsWith(rootmapLibName, ".dylib")
++#endif
++   ) {
+       rootmapLibName += gLibraryExtension;
+    }
+ 

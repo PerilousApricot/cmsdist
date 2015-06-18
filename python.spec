@@ -18,7 +18,7 @@ Requires: zlib sqlite readline ncurses
 %define github_user cms-externals
 #Source: git+https://github.com/%github_user/cpython.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}.tgz
 Source: git+https://github.com/python/cpython.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}.tgz
-Patch0: https://github.com/gartung/cpython/commit/b275de6dd60e547dc2b1db9213d20d2f7b454e12.patch
+Patch0: python2.7.10
  
 %prep
 %setup -n python-%realversion

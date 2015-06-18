@@ -1,0 +1,23 @@
+From b275de6dd60e547dc2b1db9213d20d2f7b454e12 Mon Sep 17 00:00:00 2001
+From: Patrick Gartung <gartung@fnal.gov>
+Date: Sat, 6 Jun 2015 11:17:06 -0500
+Subject: [PATCH] Update pyport.h
+
+---
+ Include/pyport.h | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/Include/pyport.h b/Include/pyport.h
+index 85e852f..eb6e54c 100644
+--- a/Include/pyport.h
++++ b/Include/pyport.h
+@@ -708,9 +708,6 @@ extern int fdatasync(int);
+ #endif
+ 
+ 
+-#if defined(__APPLE__)
+-# define _PY_PORT_CTYPE_UTF8_ISSUE
+-#endif
+ 
+ #ifdef _PY_PORT_CTYPE_UTF8_ISSUE
+ #include <ctype.h>
