@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ### RPM lcg root 6.02.10
 ## INITENV +PATH PYTHONPATH %{i}/lib
 ## INITENV SET ROOTSYS %{i}
