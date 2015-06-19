@@ -8,7 +8,7 @@ Source: git+http://root.cern.ch/git/root.git?obj=%{branch}/%{tag}&export=%{n}-%{
 %define islinux %(case %{cmsos} in (slc*|fc*) echo 1 ;; (*) echo 0 ;; esac)
 %define isdarwin %(case %{cmsos} in (osx*) echo 1 ;; (*) echo 0 ;; esac)
 
-BuildRequires: cmake ninja file
+BuildRequires: cmake ninja file gcc
 
 Requires: gsl libjpg libpng libtiff giflib pcre python fftw3 xz xrootd libxml2 openssl zlib
 
@@ -105,7 +105,7 @@ cmake ../%{n}-%{realversion} \
   -DDCAP_DIR="${DCAP_ROOT}" \
 %endif
   -DCMAKE_C_FLAGS="-D__ROOFIT_NOBANNER" \
-  -DCMAKE_C_FLAGS="-D__ROOFIT_NOBANNER" \
+  -DCMAKE_CXX_FLAGS="-D__ROOFIT_NOBANNER -fno-omit-frame-pointer" \
   -Dgviz=OFF \
   -Dbonjour=OFF \
   -Dodbc=OFF \
