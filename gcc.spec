@@ -1,10 +1,10 @@
-### RPM external gcc 4.9.2
+### RPM external gcc 4.9.3
 ## INITENV +PATH LD_LIBRARY_PATH %i/lib64
 #Source0: ftp://gcc.gnu.org/pub/gcc/snapshots/4.7.0-RC-20120302/gcc-4.7.0-RC-20120302.tar.bz2
 # Use the svn repository for fetching the sources. This gives us more control while developing
 # a new platform so that we can compile yet to be released versions of the compiler.
-%define gccRevision 223195
-%define gccBranch tags/gcc_4_9_2_release
+%define gccRevision 225078
+%define gccBranch tags/gcc_4_9_3_release
 
 %define moduleName gcc-%(echo %{gccBranch} | tr / _)-%{gccRevision}
 Source0: svn://gcc.gnu.org/svn/gcc/%{gccBranch}?module=%{moduleName}&revision=%{gccRevision}&output=/%{moduleName}.tar.gz
@@ -47,13 +47,18 @@ Source11: http://garr.dl.sourceforge.net/project/flex/flex-%{flexVersion}.tar.bz
 
 %if %isdarwin
 Patch2: https://gmplib.org/repo/gmp/raw-rev/1fab0adc5ff7
+Patch3: https://cdcvs.fnal.gov/redmine/projects/build-framework/repository/gcc-ssi-build/revisions/2041a8ad2cc581eb330bde40b0cedef9fb81b9a8/raw/patch/darwin-gcc.patch
 %endif
+
 
 
 %prep
 
 %setup -T -b 0 -n %{moduleName}
 
+%if %isdarwin 
+%patch3 -p1
+%endif
 # Filter out private stuff from RPM requires headers.
 cat << \EOF > %{name}-req
 #!/bin/sh
