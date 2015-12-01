@@ -18,7 +18,7 @@ Requires: clhep-toolfile
 Requires: coral-toolfile
 Requires: cppunit-toolfile
 Requires: curl-toolfile
-Requires: das-client-toolfile
+Requires: das_client-toolfile
 Requires: db4-toolfile
 Requires: dbs-client-toolfile
 Requires: dpm-toolfile
@@ -97,6 +97,10 @@ Requires: py2-markupsafe-toolfile
 Requires: py2-ordereddict-toolfile
 Requires: py2-parsimonious-toolfile
 Requires: py2-pygments-toolfile
+Requires: py2-PyYAML-toolfile
+Requires: py2-docopt-toolfile
+Requires: py2-prettytable-toolfile
+Requires: py2-schema-toolfile
 Requires: rivet-toolfile
 Requires: cascade-toolfile
 Requires: cython-toolfile
