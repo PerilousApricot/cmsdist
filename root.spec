@@ -127,7 +127,9 @@ TARGET_PLATF=
 
 cat <<\EOF >> MyConfig.mk
 CFLAGS+=-D__ROOFIT_NOBANNER
-CXXFLAGS+=-D__ROOFIT_NOBANNER -fno-omit-frame-pointer
+CXXFLAGS+=-D__ROOFIT_NOBANNER
+CXXFLAGS+=-fno-omit-frame-pointer
+CXXFLAGS+=-std=c++11
 EOF
 
 ./configure ${TARGET_PLATF} ${CONFIG_ARGS} ${EXTRA_OPTS}
