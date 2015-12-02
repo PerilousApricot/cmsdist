@@ -1,5 +1,6 @@
 CommonTools/Statistics
 CommonTools/Utils
+CondFormats/EgammaObjects
 CondFormats/External
 CondFormats/L1TObjects
 CondFormats/RPCObjects
