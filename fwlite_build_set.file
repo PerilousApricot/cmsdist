@@ -1,11 +1,7 @@
 CommonTools/Statistics
 CommonTools/Utils
-CondCore/DBOutputService
-CondCore/DBCommon
-CondFormats/EgammaObjects
 CondFormats/External
 CondFormats/L1TObjects
-CondFormats/PhysicsToolsObjects
 CondFormats/RPCObjects
 CondFormats/Serialization
 DataFormats/BTauReco
