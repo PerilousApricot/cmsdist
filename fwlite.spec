@@ -17,7 +17,7 @@ Requires: fwlite-tool-conf python
 
 
 # depends on CondFormats/EgammaObjects/interface/GBRForest.h which pulls in to many dependencies for fwlite
-%define patchsrc4 rm -f src/CommonTools/Utils/TMVAEvaluator*
+%define patchsrc4 rm -f src/CommonTools/Utils/TMVAEvaluator.cc
 
 %define source1 git://github.com/cms-sw/cmssw.git?protocol=https&obj=%{branch}/%{gitcommit}&module=%{cvssrc}&export=%{srctree}&output=/src.tar.gz
 
