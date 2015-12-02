@@ -18,12 +18,17 @@ Requires: castor dcap
 
 %if %isdarwin
 #Requires: freetype
+Patch1: https://github.com/gartung/root/commit/bd03452af5fff9afe62a21cc56bfb18da2566eba.patch 
 %endif
 
 %define keep_archives true
 
 %prep
 %setup -n %{n}-%{realversion}
+
+%if %isdarwin
+%patch1 -p1
+%endif
 
 # Delete these (irrelevant) files as the fits appear to confuse rpm on OSX
 # (It tries to run install_name_tool on them.)
