@@ -9,9 +9,6 @@ Requires: fwlite-tool-conf python
 # Switch off building tests
 %define patchsrc perl -p -i -e ' s|(<classpath.*test\\+test.*>)||;' config/BuildFile.xml*
 
-#patch to build fwlite release; this should be fixed in cmssw
-%define patchsrc2 sed -i -e 's|^#include "Geometry/GEMGeometry/|//#include "Geometry/GEMGeometry/|' src/Fireworks/Muons/plugins/FWGEMDigiProxyBuilder.cc
-
 # depends on MessageService, which pulls in service dependencies
 %define patchsrc3 rm -f src/FWCore/MessageLogger/python/MessageLogger_cfi.py
 

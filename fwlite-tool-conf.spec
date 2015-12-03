@@ -8,9 +8,6 @@
 %define isdarwin %(case %{cmsos} in (osx*) echo 1 ;; (*) echo 0 ;; esac)
 %define isamd64 %(case %{cmsplatf} in (*amd64*) echo 1 ;; (*) echo 0 ;; esac)
 
-Provides: libboost_regex-gcc-mt.so 
-Provides: libboost_signals-gcc-mt.so 
-Provides: libboost_thread-gcc-mt.so
 
 Requires: tbb-toolfile
 Requires: boost-toolfile
@@ -43,6 +40,7 @@ Requires: xz-toolfile
 Requires: zlib-toolfile
 Requires: libxml2-toolfile
 Requires: llvm-gcc-toolfile
+Requires: vdt-toolfile
 Requires: fwlitedata-toolfile
 
 %if %isamd64
