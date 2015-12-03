@@ -122,5 +122,6 @@ SimDataFormats/JetMatching/interface/JetFlavourInfo.h
 Geometry/TrackerGeometryBuilder/interface/GluedGeomDet.h
 Geometry/TrackerGeometryBuilder/interface/GeomDetLess.h
 DataFormats/TrackerCommon
+Geometry/CommonDetUnit
 Geometry/CommonTopologies
 Geometry/GEMGeometry
