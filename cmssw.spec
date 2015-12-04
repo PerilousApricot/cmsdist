@@ -1,4 +1,4 @@
-### RPM cms cmssw CMSSW_7_5_7
+### RPM cms cmssw CMSSW_7_6_1
 
 Requires: cmssw-tool-conf python cms-git-tools
 

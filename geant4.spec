@@ -52,7 +52,7 @@ cmake ../%{n}.%{realversion} \
   -DCMAKE_STATIC_LIBRARY_CXX_FLAGS="-fPIC" \
   -DCMAKE_STATIC_LIBRARY_C_FLAGS="-fPIC"
 
-make %makeprocesses
+make %makeprocesses VERBOSE=1
 
 %install
 

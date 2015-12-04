@@ -22,7 +22,6 @@ Requires: das_client-toolfile
 Requires: db4-toolfile
 Requires: dbs-client-toolfile
 Requires: dpm-toolfile
-Requires: evtgenlhc-toolfile
 Requires: evtgen-toolfile
 Requires: expat-toolfile
 Requires: fakesystem
@@ -97,6 +96,7 @@ Requires: py2-markupsafe-toolfile
 Requires: py2-ordereddict-toolfile
 Requires: py2-parsimonious-toolfile
 Requires: py2-pygments-toolfile
+Requires: py2-pysqlite-toolfile
 Requires: py2-PyYAML-toolfile
 Requires: py2-docopt-toolfile
 Requires: py2-prettytable-toolfile
@@ -148,7 +148,9 @@ Requires: gdb-toolfile
 Requires: py2-pytz-toolfile
 Requires: file-toolfile
 Requires: libxslt-toolfile
-Requires: giflib-toolfile
+Requires: py2-six-toolfile
+Requires: py2-pyparsing-toolfile
+Requires: py2-requests-toolfile
 
 # Only for Linux platform.
 %if %islinux
