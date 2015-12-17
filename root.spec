@@ -5,7 +5,7 @@
 %define branch cms/3c16537
 %define github_user cms-sw
 Source: git+https://github.com/%github_user/root.git?obj=%{branch}/%{tag}&export=%{n}-%{realversion}&output=/%{n}-%{realversion}-%{tag}.tgz
-
+Patch0: https://github.com/gartung/root/commit/99fdd6c7703e4bc214b7b7c031a148a8c94254a0.patch
 %define islinux %(case %{cmsos} in (slc*|fc*) echo 1 ;; (*) echo 0 ;; esac)
 %define isdarwin %(case %{cmsos} in (osx*) echo 1 ;; (*) echo 0 ;; esac)
 %define isarmv7 %(case %{cmsplatf} in (*armv7*) echo 1 ;; (*) echo 0 ;; esac)
@@ -24,6 +24,7 @@ Requires: castor dcap
 
 %prep
 %setup -n %{n}-%{realversion}
+%patch0 -p1
 
 # Delete these (irrelevant) files as the fits appear to confuse rpm on OSX
 # (It tries to run install_name_tool on them.)
